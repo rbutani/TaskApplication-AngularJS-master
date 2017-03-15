@@ -1,0 +1,98 @@
+<html lang="en" >
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Angular Material style sheet -->
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+</head>
+<body ng-app="PortFolioApp" ng-controller="myCtrl">
+  <!--
+     HTML content starts  here
+  -->  
+     <div>
+	     <md-toolbar layout="row" class="md-hue-2">
+      <div class="md-toolbar-tools">
+        <span>Task Application</span>
+      </div>
+    </md-toolbar>
+	
+	<md-list-item ng-repeat="x in products">
+    <p> {{ x }} </p>
+   
+   <md-button class="md-fab md-mini" aria-label="Close" ng-click="removeItem($index)">
+           &times;
+        </md-button>
+  
+   
+  </md-list-item>
+  <md-divider></md-divider>
+  
+	
+	
+	
+	
+  
+
+
+	<div layout="row">
+  <div flex> 
+		<md-input-container class="md-block" flex-gt-sm>
+            <label>Enter the Item Name</label>
+            <input ng-model="addMe">
+          </md-input-container>
+	</div>
+  <div flex>	
+	<md-input-container class="md-block" flex-gt-sm>
+          <md-button ng-click="addItem()">Add</md-button>
+          </md-input-container>
+		  </div>
+</div>
+   
+	 </div>
+	 
+  
+    <!--
+     HTML content ends here
+  -->  
+  
+  <!-- Angular Material requires Angular.js Libraries -->
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+
+  <!-- Angular Material Library -->
+  <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+  
+  <!-- Your application bootstrap  -->
+  <script type="text/javascript">    
+    /**
+     * You must include the dependency on 'ngMaterial' 
+     */
+    var app = angular.module('PortFolioApp', ['ngMaterial']);
+	
+	app.controller("myCtrl", function($scope) {
+    $scope.products = ["Milk", "Bread", "Cheese"];
+	$scope.addItem = function () {
+        $scope.products.push($scope.addMe);
+    } 
+	  $scope.removeItem = function (x) {
+        $scope.products.splice(x, 1);
+    }
+	
+	
+	
+});
+
+
+	
+	
+	
+  </script>
+  
+</body>
+</html>
+
+<!--
+Copyright 2016 Google Inc. All Rights Reserved. 
+Use of this source code is governed by an MIT-style license that can be in foundin the LICENSE file at http://material.angularjs.org/license.
+-->
